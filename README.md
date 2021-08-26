@@ -1,5 +1,5 @@
-# Run
+# Run:
 ## yarn start / npm start
 
-# Build
+# Build:
 ## yarn build / npm run build
