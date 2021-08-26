@@ -13,7 +13,13 @@ export const CustomInput = (props: cardNumber) => {
         maskChar={'x'}
         onChange={(e: any) => setCardNumber(e.target.value)}
       >
-        {(inputProps: any) => <input className='custominput' {...inputProps} />}
+        {(inputProps: any) => (
+          <input
+            className='custominput'
+            placeholder='Enter card number'
+            {...inputProps}
+          />
+        )}
       </InputMask>
       {error.cardNumber && (
         <div className='error'>Please enter a valid card number</div>
@@ -31,6 +37,7 @@ export const CardHolder = (props: cardHolder) => {
         className='custominput'
         type='text'
         value={name}
+        placeholder='Your name'
         onChange={(e: any) => setName(e.target.value)}
       />
       {error.name && <div className='error'>Please enter Name</div>}
@@ -59,7 +66,7 @@ export const CardExpiry = (props: cardExpiry) => {
           className='custominput customButton'
           onChange={(e) => setMonth(e.target.value)}
         >
-          <option value={''} disabled selected hidden>
+          <option value={''} disabled selected hidden className='gray'>
             MM
           </option>
           {monthCard.map((mon, i) => {
@@ -75,7 +82,7 @@ export const CardExpiry = (props: cardExpiry) => {
           className='custominput customButton'
           onChange={(e) => setYear(e.target.value)}
         >
-          <option value={''} disabled selected hidden>
+          <option value={''} disabled selected hidden className='gray'>
             YY
           </option>
           {yearCard.map((year, i) => {
@@ -107,7 +114,7 @@ export const CVV = (props: customCVV) => {
         onBlur={() => setFocus(false)}
       >
         {(inputProps: any) => (
-          <input className='custominput ' {...inputProps} />
+          <input className='custominput' placeholder='CVV' {...inputProps} />
         )}
       </InputMask>
       {error.cvv && <div className='error'>Please enter CVV</div>}

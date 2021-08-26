@@ -31,7 +31,23 @@ label {
 
 .error {
   font-size: 0.8rem;
-  color: red;
+  color: rgb(193, 193, 193);
   margin-top: -1rem;
   margin-bottom: 1rem;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(193, 193, 193);
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(193, 193, 193);
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(193, 193, 193);
 }

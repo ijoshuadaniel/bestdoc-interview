@@ -6,7 +6,7 @@ const DebitCard = (props: cardDetails) => {
   const { cardNumber, name, month, year, cvv, focus } = props;
 
   const getMonth = () => {
-    if (month === '') return '00';
+    if (month === '') return 'MM';
     if (month.length === 1) {
       return '0' + month;
     }
@@ -43,7 +43,7 @@ const DebitCard = (props: cardDetails) => {
           <div className='debitcard__bottom-details-expiry'>
             <p>Expries</p>
             <p>
-              {getMonth()}/{year === '' ? '00' : year}
+              {getMonth()}/{year === '' ? 'YY' : year}
             </p>
           </div>
         </div>
