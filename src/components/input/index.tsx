@@ -2,7 +2,8 @@ import './index.scss';
 const InputMask = require('react-input-mask');
 
 export const CustomInput = (props: cardNumber) => {
-  const { cardNumber, setCardNumber } = props;
+  const { cardNumber, setCardNumber, error } = props;
+
   return (
     <>
       <label>Card Number</label>
@@ -14,12 +15,15 @@ export const CustomInput = (props: cardNumber) => {
       >
         {(inputProps: any) => <input className='custominput' {...inputProps} />}
       </InputMask>
+      {error.cardNumber && (
+        <div className='error'>Please enter a valid card number</div>
+      )}
     </>
   );
 };
 
 export const CardHolder = (props: cardHolder) => {
-  const { name, setName } = props;
+  const { name, setName, error } = props;
   return (
     <>
       <label>Card Holder</label>
@@ -29,12 +33,13 @@ export const CardHolder = (props: cardHolder) => {
         value={name}
         onChange={(e: any) => setName(e.target.value)}
       />
+      {error.name && <div className='error'>Please enter Name</div>}
     </>
   );
 };
 
 export const CardExpiry = (props: cardExpiry) => {
-  const { month, setMonth, year, setYear } = props;
+  const { month, setMonth, year, setYear, error } = props;
 
   const monthCard: Array<string> = [];
   for (let i = 1; i <= 12; i++) {
@@ -78,12 +83,14 @@ export const CardExpiry = (props: cardExpiry) => {
           })}
         </select>
       </div>
+      {error.month ||
+        (error.year && <div className='error'>Please enter Expiry</div>)}
     </div>
   );
 };
 
 export const CVV = (props: customCVV) => {
-  const { cvv, setCVV, setFocus } = props;
+  const { cvv, setCVV, setFocus, error } = props;
   return (
     <div>
       <label>CVV</label>
@@ -98,6 +105,7 @@ export const CVV = (props: customCVV) => {
           <input className='custominput ' {...inputProps} />
         )}
       </InputMask>
+      {error.cvv && <div className='error'>Please enter CVV</div>}
     </div>
   );
 };
@@ -105,12 +113,14 @@ export const CVV = (props: customCVV) => {
 interface cardNumber {
   cardNumber: string;
   setCardNumber: (e: String) => void;
+  error: any;
 }
 
 interface customCVV {
   cvv: string;
   setCVV: (e: String) => void;
   setFocus: (bool: boolean) => void;
+  error: any;
 }
 
 interface cardExpiry {
@@ -118,9 +128,11 @@ interface cardExpiry {
   setMonth: (e: String) => void;
   year: string;
   setYear: (e: String) => void;
+  error: any;
 }
 
 interface cardHolder {
   name: string;
   setName: (e: String) => void;
+  error: any;
 }
