@@ -57,6 +57,13 @@ export const CardExpiry = (props: cardExpiry) => {
     yearCard.push(index.toString());
   }
 
+  const getMonth = (month: string) => {
+    if (month.length === 1) {
+      return '0' + month;
+    }
+    return month;
+  };
+
   return (
     <div>
       <label>Expiry</label>
@@ -72,7 +79,7 @@ export const CardExpiry = (props: cardExpiry) => {
           {monthCard.map((mon, i) => {
             return (
               <option key={i} value={mon}>
-                {mon}
+                {getMonth(mon)}
               </option>
             );
           })}
@@ -88,7 +95,7 @@ export const CardExpiry = (props: cardExpiry) => {
           {yearCard.map((year, i) => {
             return (
               <option key={i} value={year.toString()}>
-                {year}
+                {'20' + year}
               </option>
             );
           })}
