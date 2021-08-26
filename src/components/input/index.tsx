@@ -59,7 +59,9 @@ export const CardExpiry = (props: cardExpiry) => {
           className='custominput customButton'
           onChange={(e) => setMonth(e.target.value)}
         >
-          <option defaultValue={'0'} disabled></option>
+          <option value={''} disabled selected hidden>
+            MM
+          </option>
           {monthCard.map((mon, i) => {
             return (
               <option key={i} value={mon}>
@@ -73,7 +75,9 @@ export const CardExpiry = (props: cardExpiry) => {
           className='custominput customButton'
           onChange={(e) => setYear(e.target.value)}
         >
-          <option defaultValue={'0'} disabled></option>
+          <option value={''} disabled selected hidden>
+            YY
+          </option>
           {yearCard.map((year, i) => {
             return (
               <option key={i} value={year.toString()}>
@@ -96,6 +100,7 @@ export const CVV = (props: customCVV) => {
       <label>CVV</label>
       <InputMask
         mask='999'
+        maskChar='x'
         value={cvv}
         onChange={(e: any) => setCVV(e.target.value)}
         onFocus={() => setFocus(true)}
